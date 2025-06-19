@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            display:none
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1 id="titletext" class="">Hello1</h1>
+    <div id="greetings">1234</div> -->
+    <!-- ใช้กรณีประกาศฟังก์ชันและใส่ Event ใน HTML
+    <button onclick="changeColor()">This Will Change Color</button> -->
+    
+    <!-- <button id="changeBtn">This Will Change Color</button> -->
+
+    <!-- <button onclick="hide()">Hide Element</button> -->
+
+    <input type="text" name="" id="todo">
+
+    <button onClick="addElement()">Add Element</button>
+
+    <div id="results">
+
+
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        // function addElement(){
+        //     let newElement = document.createElement("p")
+        //     newElement.innerHTML = "Hello World"
+        //     let results = document.getElementById("results")
+        //     results.appendChild(newElement)         
+        // }
+        function addElement(){
+            let inp = document.getElementById("todo").value
+            let newElement = document.createElement("p")
+            newElement.innerHTML = inp
+            let results = document.getElementById("results")
+            results.appendChild(newElement) 
+            document.getElementById("todo").value = ""        
+        }
+        fetch('https://jsonplaceholder.typicode.com/todos')
+            .then(response => response.json())
+            .then(json => {
+                let result = document.getElementById("results");
+                for (let i = 0; i < json.length; i++){
+                    let newElement = document.createElement("p");
+                    newElement.innerHTML = json[i].title;
+                    result.appendChild(newElement);
+                }
+
+            })
+
+
+    </script>
+    <!-- Event
+      ทุกๆ Element สามารถมี Event อะไรบางอย่างได้-->
+
+    <!-- 
+    1. สามารภสร้าง Element ใหม่ได้แล้ว
+    2. เราจะเพิ่มข้อความลงไปใน Element ใหม่ที่สร้าง 
+    3. เราสามารถเรียก Element ที่อยากจะเพื่มข้อมูลได้แล้ว
+    4. เพื่มข้อมูลลง Element ปลายทาง-->
+</body>
+</html>
